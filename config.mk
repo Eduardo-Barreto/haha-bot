@@ -4,21 +4,21 @@
 # 06/2019
 
 # Cube file name without .ioc extension
-PROJECT_NAME = stm32_project_template
+PROJECT_NAME = cube
 VERSION := v1
 
 PROJECT_RELEASE := $(PROJECT_NAME)_$(VERSION)
 
 TARGET_BOARD := target_$(PROJECT_RELEASE)
 
-DEVICE_FAMILY  := STM32F3xx
-DEVICE_TYPE    := STM32F303xx
-DEVICE_DEF     := STM32F303xE
-DEVICE         := STM32F303RE
+DEVICE_FAMILY  := STM32F4xx
+DEVICE_TYPE    := STM32F401xx
+DEVICE_DEF     := STM32F401xC
+DEVICE         := STM32F401CCUx
 
 # Linker script file without .ld extension
 # Find it on cube folder after code generation
-DEVICE_LD_FILE := STM32F303RETx_FLASH
+DEVICE_LD_FILE := STM32F401CCUx_FLASH
 
 # Lib dir
 LIB_DIR  := lib
