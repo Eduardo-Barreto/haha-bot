@@ -37,6 +37,13 @@
         "*.cs": "csharp",
         "*.arena": "json",
         "*.py": "python",
-        "*.h": "c"
+        "*.h": "c",
+        "*.tcc": "c",
+        "cmath": "c",
+        "numeric": "c",
+        "cinttypes": "c",
+        "cstdlib": "c"
     },
+    "cmake.configureOnOpen": true,
+    "C_Cpp.intelliSenseEngineFallback": "enabled",
 }
