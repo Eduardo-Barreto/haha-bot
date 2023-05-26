@@ -21,14 +21,27 @@ char* array_to_string(uint32_t* array, uint8_t size) {
 int main(void) {
     test_core_init();
     motors_init();
+    line_sensors_init();
     communication_init();
+    communication_send_message("Hello, world!\n");
 
     for (;;) {
         line_sensors_update_reading();
 
-        char* message = array_to_string(line_sensors_get_readings(), 8);
-        strcat(message, "\n");
-        communication_send_message(message);
+        /* uint32_t* message[30];
+         * sprintf(message, "pos: %.2f\n", line_sensors_get_position());
+         * communication_send_message(message); */
+
+        uint32_t* readings = line_sensors_get_readings();
+
+        // pra cada sensor printa o valor
+        for (uint8_t i = 0; i < 8; i++) {
+            uint32_t* message[30];
+            sprintf(message, "%d\t", readings[i]);
+            communication_send_message(message);
+        }
+
+        communication_send_message("\n");
     }
 
     return 0;

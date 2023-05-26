@@ -11,16 +11,19 @@
 
 #define MOTORS_PORT GPIOB
 
-#define RIGHT_FORWARD_PIN GPIO_PIN_8
-#define RIGHT_BACKWARD_PIN GPIO_PIN_7
+#define RIGHT_FORWARD_PIN GPIO_PIN_7
+#define RIGHT_BACKWARD_PIN GPIO_PIN_8
 #define LEFT_FORWARD_PIN GPIO_PIN_5
 #define LEFT_BACKWARD_PIN GPIO_PIN_4
+#define STBY GPIO_PIN_6
 
 void motors_init() {
     MX_TIM2_Init();
 
     HAL_TIM_PWM_Start(&MOTOR_TIM_HANDLE, LEFT_MOTOR);
     HAL_TIM_PWM_Start(&MOTOR_TIM_HANDLE, RIGHT_MOTOR);
+
+    HAL_GPIO_WritePin(MOTORS_PORT, STBY, 1);
 }
 
 void motors_set_speed(int8_t left_speed, int8_t right_speed) {
@@ -29,6 +32,9 @@ void motors_set_speed(int8_t left_speed, int8_t right_speed) {
 
     HAL_GPIO_WritePin(MOTORS_PORT, RIGHT_FORWARD_PIN, (right_speed >= 0));
     HAL_GPIO_WritePin(MOTORS_PORT, RIGHT_BACKWARD_PIN, (right_speed < 0));
+
+    right_speed = constrain(right_speed, 0, 100);
+    left_speed = constrain(left_speed, 0, 100);
 
     TIM2->CCR1 = abs(right_speed);
     TIM2->CCR2 = abs(left_speed);

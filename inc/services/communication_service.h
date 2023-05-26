@@ -9,10 +9,10 @@ void communication_init(void);
 
 bool communication_line_available();
 
-char* communication_get_last_line();
+uint8_t* communication_get_last_line();
 
-bool communication_is_command(char* command);
+bool communication_is_command(uint8_t* command);
 
-void communication_send_message(char* message);
+void communication_send_message(uint8_t* message);
 
 #endif

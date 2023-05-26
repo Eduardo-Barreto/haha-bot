@@ -42,7 +42,9 @@
         "cmath": "c",
         "numeric": "c",
         "cinttypes": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "cstdio": "c",
+        "system_error": "c"
     },
     "cmake.configureOnOpen": true,
     "C_Cpp.intelliSenseEngineFallback": "enabled",
