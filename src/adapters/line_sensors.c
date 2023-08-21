@@ -34,7 +34,6 @@ sensors_calibration_t line_sensors_calibration[LINE_SENSORS_NUMBER_OF_SENSORS] =
 
 void line_sensors_init() {
     HAL_GPIO_WritePin(LINE_SENSORS_ON_PORT, LINE_SENSORS_ON_PIN, 1);
-    MX_DMA_Init();
     MX_ADC1_Init();
     HAL_ADC_Start_DMA(&LINE_SENSORS_ADC_HANDLE, m_adc_buffer, LINE_SENSORS_ADC_BUFFER_SIZE);
 }
